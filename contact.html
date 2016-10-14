@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+<!--            This is for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--            This is for the charset-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--            This is the Favicon-->
+        <link rel="icon" href="images/faviconM.ico" type="image/x-icon">
+<!--            This is to normalize the css-->
+        <link rel="stylesheet" type="text/css" href="css/normalize.css?version=9">
+<!--            This is our css StyleSheet-->
+        <link rel="stylesheet" type="text/css" href="css/style.css?version=9">
+<!--             This is Animsition plugin css file-->
+        <link rel="stylesheet" type="text/css" href="css/animsition.min.css?version=9">
+<!--            Imported Font Style-->
+        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
+<!--             Bootstrap glypicons-->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+       <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <title>Alexandru Portfolio</title>
+    </head>
+    
+    <body>
+       <nav class="fixed">
+       <button class="hamburger">&#9776;</button>
+       <div class="m-menu">
+           <p>This website is in development...</p>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="contact.html">Contact Me</a>
+       </div>
+        <div class="menu animsition">
+              <a class="animsition-link" href="index.html"><img src="images/home.png" alt="Home Button"></a>
+               <p>This website is in development...</p>
+            <ul>
+                <li><a class="animsition-link" href="index.html">Home</a></li>
+                <li><a class="animsition-link" href="about.html">About Me</a></li>
+                <li><a class="animsition-link" href="portfolio.html">Portfolio</a></li>
+                <li><a class="animsition-link" href="contact.html">Contact Me</a></li>
+            </ul>
+            </div>
+        </nav>
+        <div class="container animsition">
+          <div class="content contact-page">
+                <h2>Contact</h2>
+                <p>Have a cool project in mind, and think I can help you with it?<br>
+                    Feel free to e-mail me at <a href="mailto:blank.syss@gmail.com">blank.syss@gmail.com</a></p>
+                 <div class="social-page">
+                     <div class="col-md-12 text-center s-m-top">
+                    <ul class="social-network social-circle">
+                        <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>				
+				</div>
+                     <ul>
+                       <h2 class="h2-mail">Send Mail</h2>
+                        
+                    </ul>
+                 </div>
+                 <div class="send-mail">
+                     <?php
+                        $action=$_REQUEST['action'];
+                        if ($action=="")    /* display the contact form */
+                            {
+                     ?>    
+                      <form  action="" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="action" value="submit">
+                        <label for="Name">Name:</label><br />
+                        <input name="name" type="text" value="" size="30"/><br>
+                        <label class="mail-label" for="email">Mail:</label><br />
+                        <input name="email" type="text" value="" size="30"/><br>
+                        <label class="message-label" for="Comment">Message:</label><br />
+                        <textarea name="message" rows="7" cols="30"></textarea><br>
+                        <input id="msg-button" type="submit" value="Send E-mail!"/>
+                        </form>
+    
+            <?php
+            } 
+        else                /* send the submitted data */
+            {
+            $name=$_REQUEST['name'];
+            $email=$_REQUEST['email'];
+            $message=$_REQUEST['message'];
+            if (($name=="")||($email=="")||($message==""))
+                {
+                echo "All fields are required, please fill <a href=\"\">the form</a> again.";
+                }
+            else{		
+                $from="From: $name<$email>\r\nReturn-path: $email";
+                $subject="Message sent using your contact form";
+                mail("blank.syss@gmail.com", $subject, $message, $from);
+                echo "Email sent!";
+                }
+            }  
+        ?>
+						
+                 </div>
+            </div>
+        </div>
+            <footer class="main-footer animsition">
+               <div class="separator"></div>
+                <div class="container">
+                    <div class="subscribe">
+                        <form class="subscribe-form">
+                           <p>Subscribe now to stay in tune with my work!</p>
+                            <input id="newsletter" type="email" name="email" placeholder="email@domain.com">
+                            <button type="submit" form="form" name="submit">Subscribe</button>
+                            <div class="copyright">Copyright &copy; 2016</div>
+                        </form>
+                    </div>
+                </div>
+            </footer>
+        <!-- jQuery implementation -->
+        <script   src="http://code.jquery.com/jquery-3.1.0.min.js?version=9"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+        <!-- jQuery Animsition Plugin-->
+        <script src="js/animsition.min.js?version=9"></script>
+        <!-- jQuery sticky header plugin-->
+        <script src="js/jquery.sticky.js?version=9"></script>
+        <!-- jqBar Plugin-->
+        <script src="js/jqbar.js?version=9"></script>
+        <!-- My JavaScript File-->
+        <script src="js/main.js?version=9"></script>
+        <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </body>
+</html>
